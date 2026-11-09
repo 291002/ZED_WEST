@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en" data-theme="day">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ZED West Command Center</title>
+<meta name="description" content="ZED West smart compound executive dashboard — demonstration build with simulated data.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css?v=20261109c">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232b2b29'/%3E%3Ctext x='16' y='22' font-family='Georgia' font-size='15' font-weight='700' fill='%23b5c99a' text-anchor='middle'%3EZW%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3.5 10.5 12 4l8.5 6.5"/><path d="M5.5 9v10.5h13V9"/><path d="M10 19.5v-5h4v5"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8.5" r="3.2"/><path d="M3.5 19c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5"/><circle cx="16.8" cy="9.3" r="2.5"/><path d="M15.8 14.2c2.4.1 4.1 1.7 4.7 4.3"/></symbol>
+    <symbol id="i-building" viewBox="0 0 24 24"><path d="M5 20.5V4.5h9v16"/><path d="M14 9.5h5v11"/><path d="M3 20.5h18"/><path d="M8 8h3M8 11.5h3M8 15h3M16.5 13h0M16.5 16.5h0"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 3 5.5 13.5h6L10.5 21 18.5 10h-6z"/></symbol>
+    <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 3.5s6 6.6 6 11a6 6 0 0 1-12 0c0-4.4 6-11 6-11Z"/><path d="M9 15a3 3 0 0 0 3 3"/></symbol>
+    <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.2 5.2L4 17l3 3 5.5-5.5a4 4 0 0 0 5.2-5.2l-2.4 2.4-2.6-.4-.4-2.6z"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3.5 5 6v5.5c0 4.3 2.9 7.6 7 9 4.1-1.4 7-4.7 7-9V6z"/><path d="m9 12 2.2 2.2L15.5 10"/></symbol>
+    <symbol id="i-coins" viewBox="0 0 24 24"><ellipse cx="10" cy="6.5" rx="5.5" ry="2.5"/><path d="M4.5 6.5v4c0 1.4 2.5 2.5 5.5 2.5s5.5-1.1 5.5-2.5v-4"/><path d="M4.5 10.5v4c0 1.4 2.5 2.5 5.5 2.5"/><ellipse cx="15.5" cy="15" rx="4.5" ry="2"/><path d="M11 15v3c0 1.1 2 2 4.5 2s4.5-.9 4.5-2v-3"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14"/><path d="M5 19 13 11"/></symbol>
+    <symbol id="i-smile" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M8.5 14c.8 1.4 2 2 3.5 2s2.7-.6 3.5-2"/><path d="M9.2 9.6h0M14.8 9.6h0"/></symbol>
+    <symbol id="i-report" viewBox="0 0 24 24"><path d="M6 3.5h8.5L19 8v12.5H6z"/><path d="M14 3.5V8h5"/><path d="M9 17v-3M12 17v-6M15 17v-4"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3.5c.6 4.4 2.1 5.9 6.5 6.5-4.4.6-5.9 2.1-6.5 6.5-.6-4.4-2.1-5.9-6.5-6.5 4.4-.6 5.9-2.1 6.5-6.5Z"/><path d="M18.5 15.5c.3 1.7.8 2.2 2.5 2.5-1.7.3-2.2.8-2.5 2.5-.3-1.7-.8-2.2-2.5-2.5 1.7-.3 2.2-.8 2.5-2.5Z"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 4 2.8 19.5h18.4z"/><path d="M12 10v4.5M12 17.2h0"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16.5V11a6 6 0 0 1 12 0v5.5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="m10 8.5 5.5 3.5-5.5 3.5z"/></symbol>
+    <symbol id="i-expand" viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.8"/><path d="M12 2.8v2.4M12 18.8v2.4M2.8 12h2.4M18.8 12h2.4M5.5 5.5l1.7 1.7M16.8 16.8l1.7 1.7M5.5 18.5l1.7-1.7M16.8 7.2l1.7-1.7"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M19.5 14.5A8 8 0 0 1 9.5 4.5a8 8 0 1 0 10 10Z"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24"><path d="m6.5 9.5 5.5 5.5 5.5-5.5"/></symbol>
+    <symbol id="i-right" viewBox="0 0 24 24"><path d="m9.5 6 6 6-6 6"/></symbol>
+    <symbol id="i-left" viewBox="0 0 24 24"><path d="m14.5 6-6 6 6 6"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11M7.5 10.5 12 15l4.5-4.5"/><path d="M4.5 16.5v3h15v-3"/></symbol>
+    <symbol id="i-pdf" viewBox="0 0 24 24"><path d="M6 3.5h8.5L19 8v12.5H6z"/><path d="M14 3.5V8h5"/><path d="M9 13.5h1.5a1.25 1.25 0 0 1 0 2.5H9v-2.5zm0 2.5v2"/><path d="M13.5 13.5v4.5h1a2.25 2.25 0 0 0 0-4.5z"/></symbol>
+    <symbol id="i-xls" viewBox="0 0 24 24"><path d="M6 3.5h8.5L19 8v12.5H6z"/><path d="M14 3.5V8h5"/><path d="m9.5 12.5 4.5 5.5M14 12.5 9.5 18"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="4" y="5.5" width="16" height="14.5" rx="2"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/></symbol>
+    <symbol id="i-map" viewBox="0 0 24 24"><path d="M3.5 6.5 9 4.5l6 2 5.5-2v13l-5.5 2-6-2-5.5 2z"/><path d="M9 4.5v13M15 6.5v13"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><path d="M3.5 8.5 15 5.5l1.5 5.5L5 14z"/><path d="m16.5 9 3.5-1v4.5l-3.2-.6"/><path d="M8 13.2V19H5"/></symbol>
+    <symbol id="i-car" viewBox="0 0 24 24"><path d="M4.5 16.5v-4l2-5h11l2 5v4z"/><path d="M4.5 12.5h15"/><circle cx="8" cy="16.5" r="1.6"/><circle cx="16" cy="16.5" r="1.6"/></symbol>
+    <symbol id="i-door" viewBox="0 0 24 24"><path d="M6 20.5V4h12v16.5"/><path d="M3.5 20.5h17"/><path d="M14.5 12.5h0"/></symbol>
+    <symbol id="i-fire" viewBox="0 0 24 24"><path d="M12 21c-3.6 0-6-2.4-6-5.6C6 11 11 9.5 10.5 3.5 14 5.5 18 9.6 18 15.4 18 18.6 15.6 21 12 21Z"/><path d="M12 21c-1.6 0-2.7-1.1-2.7-2.6 0-2 2.2-2.8 2.3-5 1.6 1 3.1 2.8 3.1 5 0 1.5-1.1 2.6-2.7 2.6Z"/></symbol>
+    <symbol id="i-thermo" viewBox="0 0 24 24"><path d="M10 14.5V5a2 2 0 0 1 4 0v9.5a4 4 0 1 1-4 0Z"/><path d="M12 9v7"/></symbol>
+    <symbol id="i-lift" viewBox="0 0 24 24"><rect x="4.5" y="3.5" width="15" height="17" rx="1.5"/><path d="M12 3.5v17"/><path d="m7 9 1.5-1.5L10 9M14 7.5l1.5 1.5L17 7.5"/></symbol>
+    <symbol id="i-pool" viewBox="0 0 24 24"><path d="M3 17c1.5 0 1.5 1 3 1s1.5-1 3-1 1.5 1 3 1 1.5-1 3-1 1.5 1 3 1 1.5-1 3-1"/><path d="M8 14.5V5a2 2 0 0 1 3.5-1.3M14 14.5V5a2 2 0 0 1 3.5-1.3"/><path d="M8 8h6M8 11.5h6"/></symbol>
+    <symbol id="i-tree" viewBox="0 0 24 24"><path d="M12 21v-6"/><path d="M12 15c-4 0-6.5-2.3-6.5-5.2C5.5 6.5 8.4 3.5 12 3.5s6.5 3 6.5 6.3c0 2.9-2.5 5.2-6.5 5.2Z"/><path d="M9 21h6"/></symbol>
+    <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="m11 12 8.5-8.5M16.5 6.5l2.5 2.5M14.5 8.5l2 2"/></symbol>
+    <symbol id="i-gauge" viewBox="0 0 24 24"><path d="M4 17a8 8 0 1 1 16 0"/><path d="m12 17 4-5"/><path d="M4 17h2M18 17h2"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="m8.5 12 2.3 2.3 4.7-4.6"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5.5M12 7.8h0"/></symbol>
+    <symbol id="i-cpu" viewBox="0 0 24 24"><rect x="6.5" y="6.5" width="11" height="11" rx="1.5"/><path d="M10 10h4v4h-4zM9.5 3.5v3M14.5 3.5v3M9.5 17.5v3M14.5 17.5v3M3.5 9.5h3M3.5 14.5h3M17.5 9.5h3M17.5 14.5h3"/></symbol>
+    <symbol id="i-pump" viewBox="0 0 24 24"><circle cx="11" cy="13" r="5"/><path d="M11 13 14 10"/><path d="M16 13h4.5v-3M3.5 18.5h15"/><path d="M11 8V4.5h-3"/></symbol>
+    <symbol id="i-tank" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="6.5" ry="2.3"/><path d="M5.5 6v12c0 1.3 2.9 2.3 6.5 2.3s6.5-1 6.5-2.3V6"/><path d="M5.5 12.5c0 1.3 2.9 2.3 6.5 2.3s6.5-1 6.5-2.3"/></symbol>
+    <symbol id="i-gen" viewBox="0 0 24 24"><rect x="3.5" y="7.5" width="17" height="10" rx="1.5"/><path d="m12.5 9.5-2 3h3l-2 3"/><path d="M6 17.5v2M18 17.5v2M7 7.5v-2h4v2"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3.8 2.5 5.1 5.6.8-4 4 .9 5.6-5-2.7-5 2.7.9-5.6-4-4 5.6-.8z"/></symbol>
+    <symbol id="i-msg" viewBox="0 0 24 24"><path d="M4.5 5.5h15v10h-8l-4 3.5v-3.5h-3z"/><path d="M8 9.5h8M8 12.5h5"/></symbol>
+    <symbol id="i-walk" viewBox="0 0 24 24"><circle cx="13" cy="4.8" r="1.6"/><path d="m9.5 21 2.5-6.5 2.5 2.5V21"/><path d="m8 12 2.5-4.5 3.5.5 2 3.5 2.5 1"/><path d="m12 14.5 1-6.5"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 4 8.5 4.5L12 13 3.5 8.5z"/><path d="m3.5 12.5 8.5 4.5 8.5-4.5M3.5 16.5 12 21l8.5-4.5"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><path d="M9 6v12M15 6v12"/></symbol>
+    <symbol id="i-replay" viewBox="0 0 24 24"><path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3"/><path d="M4.5 4.5v4h4"/><path d="m10.5 9.5 4 2.5-4 2.5z"/></symbol>
+    <symbol id="i-plug" viewBox="0 0 24 24"><path d="M9 3.5v4M15 3.5v4"/><path d="M6.5 7.5h11v3a5.5 5.5 0 0 1-11 0z"/><path d="M12 16v4.5"/></symbol>
+    <symbol id="i-up" viewBox="0 0 24 24"><path d="m6 15 6-6 6 6"/></symbol>
+  </defs>
+</svg>
+
+<div class="bg" aria-hidden="true"><img src="assets/zedwest-compound.jpg" alt=""></div>
+
+<!-- Cinematic introduction -->
+<section id="intro" class="intro" aria-label="ZED West introduction">
+  <div class="intro-frame">
+    <video id="introVideo" class="intro-video" src="assets/zedwest-intro.mp4" poster="assets/zedwest-intro-poster.jpg" muted playsinline preload="auto"></video>
+  </div>
+  <div class="intro-shade"></div>
+  <div class="intro-title">
+    <span class="intro-kicker">Ora Developers · Sheikh Zayed</span>
+    <h1>ZED WEST</h1>
+    <span class="intro-sub">Smart Compound Command Center</span>
+  </div>
+  <div class="intro-bar"><i id="introProg"></i></div>
+  <button id="introPlay" class="intro-btn intro-play" hidden><svg><use href="#i-play"/></svg>Play introduction</button>
+  <button id="introSkip" class="intro-btn intro-skip">Enter dashboard<svg><use href="#i-right"/></svg></button>
+</section>
+
+<!-- Application shell -->
+<div id="app" class="app" aria-hidden="true">
+  <nav class="rail" aria-label="Quick actions">
+    <div class="rail-logo" title="ZED West">ZW</div>
+    <button class="rb" data-act="alerts" title="Alerts & notifications"><svg><use href="#i-bell"/></svg><b class="rb-badge" id="alertCount"></b></button>
+    <button class="rb" data-act="insights" title="Executive intelligence"><svg><use href="#i-spark"/></svg></button>
+    <button class="rb" data-act="tab:reports" title="Reports & exports"><svg><use href="#i-report"/></svg></button>
+    <button class="rb" data-act="sources" title="Data sources & integrations"><svg><use href="#i-plug"/></svg></button>
+    <span class="rail-gap"></span>
+    <button class="rb" data-act="replay" title="Replay introduction"><svg><use href="#i-replay"/></svg></button>
+    <button class="rb" data-act="present" title="Presentation mode (P)"><svg><use href="#i-expand"/></svg></button>
+    <button class="rb" data-act="theme" title="Switch Daylight / Evening theme"><svg class="ic-day"><use href="#i-moon"/></svg><svg class="ic-night"><use href="#i-sun"/></svg></button>
+  </nav>
+
+  <div class="main-col">
+    <header class="hdr">
+      <div class="brand">
+        <h1>ZED WEST</h1>
+        <p>Smart Compound Command Center <span>· Ora Developers</span></p>
+      </div>
+      <div class="hdr-right">
+        <span class="chip-demo" id="modeChip" title="All figures on this dashboard are simulated demonstration data">Demo data</span>
+        <div class="filters" role="group" aria-label="Filters">
+          <label class="fsel"><svg><use href="#i-calendar"/></svg><select id="fMonth" aria-label="Reporting month"></select></label>
+          <label class="fsel"><svg><use href="#i-map"/></svg><select id="fZone" aria-label="Zone"></select></label>
+          <label class="fsel"><svg><use href="#i-building"/></svg><select id="fBld" aria-label="Building"></select></label>
+          <button class="fclear" id="fClear" hidden>Clear</button>
+        </div>
+        <div class="clock" id="clock"></div>
+      </div>
+    </header>
+
+    <div class="tabs-wrap">
+      <div class="tabs" role="tablist" id="tabs"></div>
+    </div>
+
+    <main id="main" class="main" tabindex="-1"></main>
+  </div>
+</div>
+
+<div id="present" class="present-bar" hidden>
+  <i class="pb-prog"><b id="pbFill"></b></i>
+  <button data-act="pprev" title="Previous tab (←)"><svg><use href="#i-left"/></svg></button>
+  <button data-act="ppause" id="pbPause" title="Pause / resume (Space)"><svg><use href="#i-pause"/></svg></button>
+  <button data-act="pnext" title="Next tab (→)"><svg><use href="#i-right"/></svg></button>
+  <span id="pbLabel"></span>
+  <button data-act="present" title="Exit presentation (Esc)"><svg><use href="#i-x"/></svg></button>
+</div>
+
+<div id="scrim" class="scrim" hidden></div>
+<aside id="drawer" class="drawer" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="drTitle">
+  <header class="dr-h"><div><small id="drKicker"></small><h2 id="drTitle"></h2></div><button class="dr-x" data-act="close" aria-label="Close"><svg><use href="#i-x"/></svg></button></header>
+  <div class="dr-b" id="drBody"></div>
+</aside>
+<div id="pop" class="pop" hidden></div>
+<div id="tip" class="tip" hidden role="tooltip"></div>
+<div id="toast" class="toast" hidden></div>
+<iframe id="printFrame" title="Report print frame" style="position:fixed;width:0;height:0;border:0;right:0;bottom:0"></iframe>
+
+<script src="js/integrations.js?v=20261109c"></script>
+<script src="js/data.js?v=20261109c"></script>
+<script src="js/charts.js?v=20261109c"></script>
+<script src="js/xlsx.js?v=20261109c"></script>
+<script src="js/app.js?v=20261109c"></script>
+</body>
+</html>
